@@ -1,0 +1,26 @@
+{
+  "name": "cloud",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-19",
+  "compatibility_flags": [
+    "global_fetch_strictly_public"
+  ],
+  // 零配置模式：src/agconnect-services.json（AGC 控制台下载）随 Worker 打包，
+  // 自动解密 client_secret/api_key 并走客户端网关（CN: connect-drcn.dbankcloud.cn）。
+  // 若配置了下方 AGC_* secret，则优先使用服务端 SDK 模式（connect-api.cloud.huawei.com）：
+  //   npx wrangler secret put AGC_CLIENT_ID
+  //   npx wrangler secret put AGC_CLIENT_SECRET
+  //   npx wrangler secret put AGC_PROJECT_ID
+  //   npx wrangler secret put AGC_DEVELOPER_ID
+  "vars": {
+    // AGC 数据处理位置：CN / RU / SG / DE
+    "AGC_REGION": "CN"
+  },
+  "assets": {
+    // The path to the directory containing the `index.html` file to be served at `/`
+    "directory": "./public"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
